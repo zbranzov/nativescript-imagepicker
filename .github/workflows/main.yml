@@ -1,0 +1,21 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build_app_job:
+    runs-on: macOS-10.14
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Nativescript
+      run: npm i -g nativescript
+    - name: Build app
+      run: |
+        cd demo
+        npm i nativescript-imagepicker -D -E
+        npm i
+        tns build ios --env.uglify
