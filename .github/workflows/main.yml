@@ -18,4 +18,6 @@ jobs:
         cd demo
         npm i nativescript-imagepicker -P -E
         npm i
+        pod repo update
+        pip install six
         tns build ios --env.uglify
