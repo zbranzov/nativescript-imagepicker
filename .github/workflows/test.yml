@@ -1,0 +1,25 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build_app_job:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Nativescript
+      run: npm i -g nativescript
+    - name: Build plugin
+      run: |
+        cd src
+        npm run build
+    - name: Build app
+      run: |
+        cd demo
+        npm i
+        pip install six
+        tns build ios --env.uglify --copy-to "./outputs/demo.app"
