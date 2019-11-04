@@ -16,6 +16,6 @@ jobs:
     - name: Build app
       run: |
         cd demo
-        npm i nativescript-imagepicker -D -E
+        npm i nativescript-imagepicker -P -E
         npm i
         tns build ios --env.uglify
