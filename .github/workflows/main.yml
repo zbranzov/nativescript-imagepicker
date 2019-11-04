@@ -13,10 +13,13 @@ jobs:
         node-version: '10.x'
     - name: Install Nativescript
       run: npm i -g nativescript
+    - name: Build plugin
+      run: |
+        cd src
+        npm run build
     - name: Build app
       run: |
         cd demo
-        npm i nativescript-imagepicker -P -E
         npm i
         pip install six
         tns build ios --env.uglify
