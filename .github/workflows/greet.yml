@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Thank you for reporting an issue :bug:. Please provide all available details so we can investigate:mag_right: further.'
+        pr-message: ':rocket: Thank you for contributing to :blue_heart:NativeScript:blue_heart: world:exclamation:'
