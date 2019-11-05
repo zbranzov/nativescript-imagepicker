@@ -33,7 +33,7 @@ jobs:
 #         "curl -u $SAUCE_USER:$SAUCE_KEY -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/$SAUCE_USER/imagepicker-actions.zip?overwrite=true --data-binary @imagepicker-actions.zip"
 
   Run_tests_job:
-#     needs: [build_app_job]
+#     needs: [build_app_job1]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
