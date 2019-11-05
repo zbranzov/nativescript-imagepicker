@@ -32,21 +32,21 @@ jobs:
         zip -r imagepicker-actions.zip demo.app
         "curl -u $SAUCE_USER:$SAUCE_KEY -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/$SAUCE_USER/imagepicker-actions.zip?overwrite=true --data-binary @imagepicker-actions.zip"
 
-  Run_tests_job:
-    needs: [build_app_job]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: Run tests
-      env:
-        SAUCE_USER: ${{ secrets.SAUCE_USER }}
-        SAUCE_KEY: ${{ secrets.SAUCE_KEY }}
-      timeout-minutes: 20
-      run: |
-        npm i -g appium
-        cd tests && npm i
-        npm run e2e -- --runType sim12iPhoneX --sauceLab --appPath imagepicker-actions.zip
+#   Run_tests_job:
+#     needs: [build_app_job]
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Setup Node
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '10.x'
+#     - name: Run tests
+#       env:
+#         SAUCE_USER: ${{ secrets.SAUCE_USER }}
+#         SAUCE_KEY: ${{ secrets.SAUCE_KEY }}
+#       timeout-minutes: 20
+#       run: |
+#         npm i -g appium
+#         cd tests && npm i
+#         npm run e2e -- --runType sim12iPhoneX --sauceLab --appPath imagepicker-actions.zip
